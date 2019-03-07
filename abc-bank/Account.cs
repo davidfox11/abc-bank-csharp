@@ -35,7 +35,18 @@ namespace abc_bank
         {
             if (amount <= 0) {
                 throw new ArgumentException("amount must be greater than zero");
-            } else {
+            }
+            
+            else if (amount > 1000){
+                throw new ArgumentException("Cannot withdraw more than €1000 per day.");
+            }
+
+            else if (accountType == 1 || accountType == 2){
+                Console.WriteLine("You cannot withdraw from a savings account");
+                return;
+            }
+
+            else {
                 transactions.Add(new Transaction(-amount));
             }
         }
